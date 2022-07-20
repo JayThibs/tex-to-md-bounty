@@ -29,16 +29,16 @@ questions regarding these adversarial attacks and examples.
     understanding of machine learning systems?
 
 Our approach to introducing this field is as follows. In subsection
-$\\ref{sub:lp}$ we introduce the basic *L*<sub>*p*</sub> adversarial
-examples paradigm. In subsections $\\ref{sub:fgsm}$ and
-$\\ref{sub:pgd}$, we introduce two classic adversarial attacks, namely
+*L*<sub>*p*</sub> Adversarial Robustness we introduce the basic *L*<sub>*p*</sub> adversarial
+examples paradigm. In subsections Fast Gradient Sign Method and
+Projected Gradient Descent, we introduce two classic adversarial attacks, namely
 the Fast Gradient Sign Method (FGSM) and Projected Gradient Descent
-(PGD). In subsection $\\ref{sub:training}$, we introduce adversarial
+(PGD). In subsection Adversarial Training, we introduce adversarial
 training, a basic defense against adversarial attacks. In subsection
-$\\ref{sub:prop}$, we discuss two surprising properties of adversarial
-attacks, specifically their transferability $\\ref{subsub:transfer}$ and
-their existence in the real world $\\ref{subsub:real}$. Finally, in
-subsection $\\ref{sub:unforseen}$, we go beyond the *L*<sub>*p*</sub>
+Properties of Adversarial Examples, we discuss two surprising properties of adversarial
+attacks, specifically their transferability in Transferability of Adversarial Examples and
+their existence in the real world in Real World Adversarial Examples. Finally, in
+subsection Unforseen Attacks, we go beyond the *L*<sub>*p*</sub>
 paradigm and discuss other adversarial attacks which don’t fit in this
 paradigm.
 
@@ -62,9 +62,9 @@ through some norm from the *L*<sub>*p*</sub> family of norms (aka the
 euclidean distance and the ∞-norm, which is simply the maximum over the
 dimensions.
 
-<figure>
+<p align="center">
 <img src="images/openai_panda.png" id="fig:openai_panda" style="width:10cm" alt="By adding imperceptible noise to an image, we can fool the model into classifying the image improperly." /><figcaption aria-hidden="true">By adding imperceptible noise to an image, we can fool the model into classifying the image improperly.</figcaption>
-</figure>
+</p>
 
 We restate the paradigm using mathematical notation. Let 𝒟 be a dataset
 and *x* ∈ 𝒟 be an example in our training dataset. Let *f* : 𝒳 → 𝒴 be a
