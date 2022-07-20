@@ -29,16 +29,14 @@ questions regarding these adversarial attacks and examples.
     understanding of machine learning systems?
 
 Our approach to introducing this field is as follows. In subsection
-*L*<sub>*p*</sub> Adversarial Robustness we introduce the basic *L*<sub>*p*</sub> adversarial
-examples paradigm. In subsections Fast Gradient Sign Method and
-Projected Gradient Descent, we introduce two classic adversarial attacks, namely
+1.1 we introduce the basic *L*<sub>*p*</sub> adversarial
+examples paradigm. In subsections 1.2 and 1.3, we introduce two classic adversarial attacks, namely
 the Fast Gradient Sign Method (FGSM) and Projected Gradient Descent
-(PGD). In subsection Adversarial Training, we introduce adversarial
-training, a basic defense against adversarial attacks. In subsection
-Properties of Adversarial Examples, we discuss two surprising properties of adversarial
-attacks, specifically their transferability in Transferability of Adversarial Examples and
-their existence in the real world in Real World Adversarial Examples. Finally, in
-subsection Unforseen Attacks, we go beyond the *L*<sub>*p*</sub>
+(PGD). In subsection 1.4, we introduce adversarial
+training, a basic defense against adversarial attacks. In subsection 1.5, we discuss two surprising properties of adversarial
+attacks, specifically their transferability 1.5.1 and
+their existence in the real world in 1.5.2. Finally, in
+subsection 1.6, we go beyond the *L*<sub>*p*</sub>
 paradigm and discuss other adversarial attacks which don’t fit in this
 paradigm.
 
@@ -66,8 +64,8 @@ dimensions.
 <img src="images/openai_panda.png" id="fig:openai_panda" style="width:10cm" alt="By adding imperceptible noise to an image, we can fool the model into classifying the image improperly." /><figcaption aria-hidden="true">By adding imperceptible noise to an image, we can fool the model into classifying the image improperly.</figcaption>
 </p>
 
-We restate the paradigm using mathematical notation. Let 𝒟 be a dataset
-and *x* ∈ 𝒟 be an example in our training dataset. Let *f* : 𝒳 → 𝒴 be a
+We restate the paradigm using mathematical notation. Let $\mathcal{D}$ be a dataset
+and *x* ∈ $\mathcal{D}$ be an example in our training dataset. Let *f* : 𝒳 → 𝒴 be a
 machine learning model (usually a classifier) which we are trying to
 disrupt. An adversarial attack consists of defining a function
 *g*<sub>*a**d**v*</sub> : 𝒳 → 𝒳 which maps training examples to
@@ -93,19 +91,19 @@ pixel in the images it generates differs at most from the original image
 by some *ε*.
 
 Let *l* be some loss function (e.g., cross entropy loss) used to train
-*f*. Moreover, let *ŷ* = *f*(*x*) be the predictions of our model on
+*f*. Moreover, let *ŷ* = *f*(*x*) be the predictions of our model on
 input *x*. Then, we can generate adversarial examples as follows:
 
-$$*x*<sub>*a**d**v*</sub> = *x* + *ε* \* sign(∇<sub>*x*</sub>(*l*(*ŷ*, *y*))).$$
+$$*x_{adv}* = *x* + *ε* \* sign(∇_{*x*}(*l*(*ŷ*, *y*))).$$
 
-The gradient ∇<sub>*x*</sub>(*l*(*ŷ*, *y*)) represents how to modify *x*
-to maximize the loss *l*(*ŷ*, *y*). We then take the sign of the
+The gradient ∇<sub>*x*</sub>(*l*(*ŷ*, *y*)) represents how to modify *x*
+to maximize the loss *l*(*ŷ*, *y*). We then take the sign of the
 gradient before adding it to the original example *x*. This does two
 things. First, it helps bound the gradient between -1 and 1. This
 bounding of the gradient makes *x*<sub>*a**d**v*</sub> naturally satisfy
 the ∞-norm constraint:
 
-$$*x*<sub>*a**d**v*</sub> − *x* = *ε* \* sign(∇<sub>*x*</sub>(*l*(*f*(*x*), *y*)).$$
+$$*x_{adv}* − *x* = *ε* \* sign(∇_{*x*}(*l*(*f*(*x*), *y*)).$$
 
 Second, taking the sign of the gradient actually works better than
 naively using the gradient, so long as *f* can be approximated well as a
@@ -151,7 +149,7 @@ During adversarial training, we expose our model to adversarial examples
 and penalize our model if the model is decieved. In particular, an
 adversarial training loss might be as follows:
 
-$$Loss(*f*, 𝒟) = 𝔼<sub>*x*, *y* ∼ 𝒟</sub>\[CrossEntropy(*f*(*x*),*y*)+*λ*⋅CrossEntropy(*f*(*g*<sub>*a**d**v*</sub>(*x*)),*y*)\].$$
+$$\text{Loss}(f, \mathcal{D}) = 𝔼_{x,y \sim \mathcal{D}}\left[\text{CrossEntropy}(f(x), y) + \lambda \cdot \text{CrossEntropy}(f(g_{adv}(x)), y)\right].$$
 
 where *λ* is some hyperparameter determining how much we emphasize the
 adversarial training. This often reduces accuracy, but increases
