@@ -91,7 +91,7 @@ calibration error of the worst bin, with the intuition that this
 prevents catastrophic failure cases while giving up some efficacy on
 more mundane cases.
 
-$$MCE = max<sub>*m* ∈ {1, ..., *M*}</sub>|acc(*B*<sub>*m*</sub>) − conf(*B*<sub>*m*</sub>)|$$
+$$MCE = \max_{m ∈ {1, ..., *M*}}|acc(*B_m*) − conf(*B_m*)|$$
 
 Like ECE, MCE ranges between 0 and 1, with lower scores being better.
 MCE is much less common than ECE. Quickly eyeballing some results gives
@@ -103,13 +103,13 @@ us that a model with an MCE of 0.1 can be considered strong (Guo et al.
 The likelihood of a dataset is the probability that a model assigns to
 the entire dataset. It is defined as follows:
 
-$$Likelihood = ∏<sub>*x*, *y* ∼ 𝒟</sub>*p*(*y*|*x*)$$
+$$Likelihood = \prod_{*x*, *y* ∼ \mathcal{D}}*p*(*y*|*x*)$$
 
 for *p*(*y*|*x*) our classifier. For numerical stability reasons, it’s
 common practice to take the negative log likelihood (NLL) defined as
 follows:
 
-$$NLL =  − ∑<sub>*x*, *y* ∼ 𝒟</sub>log *p*(*y*|*x*)$$
+$$NLL =  − \sum_{*x*, *y* ∼ \mathcal{D}}log *p*(*y*|*x*)$$
 
 Negative log likelihood (or cross-entropy loss) is commonly used for
 maximizing predictive accuracy. However, NLL is also useful for
