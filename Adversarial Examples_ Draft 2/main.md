@@ -96,7 +96,7 @@ Let *l* be some loss function (e.g., cross entropy loss) used to train
 *f*. Moreover, let *ŷ* = *f*(*x*) be the predictions of our model on
 input *x*. Then, we can generate adversarial examples as follows:
 
-*x*<sub>*a**d**v*</sub> = *x* + *ε* \* sign(∇<sub>*x*</sub>(*l*(*ŷ*, *y*))).
+$$*x*<sub>*a**d**v*</sub> = *x* + *ε* \* sign(∇<sub>*x*</sub>(*l*(*ŷ*, *y*))).$$
 
 The gradient ∇<sub>*x*</sub>(*l*(*ŷ*, *y*)) represents how to modify *x*
 to maximize the loss *l*(*ŷ*, *y*). We then take the sign of the
@@ -105,7 +105,7 @@ things. First, it helps bound the gradient between -1 and 1. This
 bounding of the gradient makes *x*<sub>*a**d**v*</sub> naturally satisfy
 the ∞-norm constraint:
 
-*x*<sub>*a**d**v*</sub> − *x* = *ε* \* sign(∇<sub>*x*</sub>(*l*(*f*(*x*), *y*)).
+$$*x*<sub>*a**d**v*</sub> − *x* = *ε* \* sign(∇<sub>*x*</sub>(*l*(*f*(*x*), *y*)).$$
 
 Second, taking the sign of the gradient actually works better than
 naively using the gradient, so long as *f* can be approximated well as a
@@ -151,7 +151,7 @@ During adversarial training, we expose our model to adversarial examples
 and penalize our model if the model is decieved. In particular, an
 adversarial training loss might be as follows:
 
-Loss(*f*, 𝒟) = 𝔼<sub>*x*, *y* ∼ 𝒟</sub>\[CrossEntropy(*f*(*x*),*y*)+*λ*⋅CrossEntropy(*f*(*g*<sub>*a**d**v*</sub>(*x*)),*y*)\].
+$$Loss(*f*, 𝒟) = 𝔼<sub>*x*, *y* ∼ 𝒟</sub>\[CrossEntropy(*f*(*x*),*y*)+*λ*⋅CrossEntropy(*f*(*g*<sub>*a**d**v*</sub>(*x*)),*y*)\].$$
 
 where *λ* is some hyperparameter determining how much we emphasize the
 adversarial training. This often reduces accuracy, but increases
@@ -213,7 +213,7 @@ Recently, there has been work into benchmarking adversarial robustness
 (Croce et al. 2021).
 
 References
-----------
+==========
 
 Brown, Tom B., Dandelion Mané, Aurko Roy, Martín Abadi, and Justin
 Gilmer. 2018. “Adversarial Patch.” <http://arxiv.org/abs/1712.09665>.
