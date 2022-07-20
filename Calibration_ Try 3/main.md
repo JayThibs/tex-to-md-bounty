@@ -91,7 +91,7 @@ calibration error of the worst bin, with the intuition that this
 prevents catastrophic failure cases while giving up some efficacy on
 more mundane cases.
 
-MCE = max<sub>*m* ∈ {1, ..., *M*}</sub>|acc(*B*<sub>*m*</sub>) − conf(*B*<sub>*m*</sub>)|
+$$MCE = max<sub>*m* ∈ {1, ..., *M*}</sub>|acc(*B*<sub>*m*</sub>) − conf(*B*<sub>*m*</sub>)|$$
 
 Like ECE, MCE ranges between 0 and 1, with lower scores being better.
 MCE is much less common than ECE. Quickly eyeballing some results gives
@@ -103,13 +103,13 @@ us that a model with an MCE of 0.1 can be considered strong (Guo et al.
 The likelihood of a dataset is the probability that a model assigns to
 the entire dataset. It is defined as follows:
 
-Likelihood = ∏<sub>*x*, *y* ∼ 𝒟</sub>*p*(*y*|*x*)
+$$Likelihood = ∏<sub>*x*, *y* ∼ 𝒟</sub>*p*(*y*|*x*)$$
 
 for *p*(*y*|*x*) our classifier. For numerical stability reasons, it’s
 common practice to take the negative log likelihood (NLL) defined as
 follows:
 
-NLL =  − ∑<sub>*x*, *y* ∼ 𝒟</sub>log *p*(*y*|*x*)
+$$NLL =  − ∑<sub>*x*, *y* ∼ 𝒟</sub>log *p*(*y*|*x*)$$
 
 Negative log likelihood (or cross-entropy loss) is commonly used for
 maximizing predictive accuracy. However, NLL is also useful for
@@ -146,9 +146,9 @@ The top two plots show the histogram of confidences and the bottom two
 plots show the gap between the expected and actual accuracy for each
 bin.
 
-<figure>
+<p align=center>
 <img src="images/modern.png" id="fig:modern" style="width:7.5cm" alt="The confidence histogram (top) and reliability diagram (bot) of a LeNet (left) and ResNet (right). Figure taken from (Guo et al. 2017)." /><figcaption aria-hidden="true">The confidence histogram (top) and reliability diagram (bot) of a LeNet (left) and ResNet (right). Figure taken from <span class="citation" data-cites="guo2017calibration">(Guo et al. 2017)</span>.</figcaption>
-</figure>
+</p>
 
 Notice how the confidence scores for ResNets are quite concentrated in
 the last bin and how the actual accuracy in each bin is much lower than
@@ -174,9 +174,9 @@ accuracy). See figure
 <a href="#fig:temperature" data-reference-type="ref" data-reference="fig:temperature">2</a>
 for a visualization of this.
 
-<figure>
+<p align=center>
 <img src="images/temperature.png" id="fig:temperature" style="width:7.5cm" alt="We apply both temperature and softmax to some fixed logits and graph the results. Increasing the temperature increases spread, while decreasing the temperature sharpens the distribution." /><figcaption aria-hidden="true">We apply both temperature and softmax to some fixed logits and graph the results. Increasing the temperature increases spread, while decreasing the temperature sharpens the distribution.</figcaption>
-</figure>
+</p>
 
 Temperature scaling is usually implemented by first training a model
 normally and then determining the optimal value of temperature after the
@@ -321,6 +321,9 @@ well-calibrated, how researchers are able to quantify this
 miscalibration, and how researchers usually address in-distribution
 calibration. Finally, we discussed calibration on out-of-distribution or
 corrupted inputs as well as a few promising approaches.
+
+References
+==========
 
 Brier, Glenn W. 1950. “Verification of Forecasts Expressed in Terms of
 Probability.” *Monthly Weather Review* 78 (1): 1–3.
