@@ -36,13 +36,13 @@ Problem
 
 To be precise, we have some model *f*<sub>*θ*</sub>(*x*) which outputs a
 result and an auxiliary confidence score for each input. We train this
-model on some dataset 𝒟<sup>*t**r**a**in*</sup> and test it on a
+model on some dataset 𝒟<sup>*train*</sup> and test it on a
 testing set 𝒟<sup>*test*</sup>. Because we have access to the
-training set, we know that 𝒟<sup>*t**r**a**in*</sup> consists of only
+training set, we know that 𝒟<sup>*train*</sup> consists of only
 in-distribution data. However, to simulate real-world conditions, we
 have that 𝒟<sup>*test*</sup> is composed of an in-distribution set
 𝒟<sub>*in*</sub><sup>*test*</sup> and an out-of-distribution set
-𝒟<sub>*o**u**t*</sub><sup>*test*</sup> shuffled together.
+𝒟<sub>*out*</sub><sup>*test*</sup> shuffled together.
 
 Let *s*<sub>1</sub>, ..., *s*<sub>*n*</sub> and
 *s*’<sub>1</sub>, …, *s*’<sub>*n*</sub> be the confidence scores for
@@ -89,13 +89,13 @@ One of the primary metrics to measure OOD detection quality is FPR 95,
 which shows false positive rate at 95% true positive rate. Essentially,
 we set the out-of-distribution threshold *t* such that we detect 95% of
 the out-of-distribution data
-𝒟<sub>*o**u**t*</sub><sup>*test*</sup>. Then, out of the examples
+𝒟<sub>*out*</sub><sup>*test*</sup>. Then, out of the examples
 marked as out-of-distribution, we measure the proportion which are
 actually in-distribution 𝒟<sub>*in*</sub><sup>*test*</sup>.
 
 For instance, in the cats-vs-dogs example, we might collect a dataset of
 cats and dogs 𝒟<sub>*in*</sub><sup>*test*</sup> and a dataset of
-hamsters 𝒟<sub>*o**u**t*</sub><sup>*test*</sup>. Then for FPR 95,
+hamsters 𝒟<sub>*out*</sub><sup>*test*</sup>. Then for FPR 95,
 we find the threshold *t* which classifies 95% of the hamsters as
 out-of-distribution. Finally, we see the proportion of cat/dog images
 which as classified as out-of-distribution along with the hamsters. Note
@@ -103,9 +103,9 @@ that the 95% threshold is somewhat arbitrary. Other papers have used FPR
 90 and, in principle, any FPR *N* could exist. However, FPR 95 is the
 current community standard.
 
-<figure>
-<img src="images/fpr_tpr.png" id="fig:my_label" style="width:5.5cm" alt="True positive rate vs false positive rate." /><figcaption aria-hidden="true">True positive rate vs false positive rate.</figcaption>
-</figure>
+<p align=center>
+<img src="images/fpr_tpr.png" id="fig:my_label" style="width:5.5cm" alt="True positive rate vs false positive rate." /><p align=center>True positive rate vs false positive rate.</p>
+</p>
 
 ### AUROC
 
@@ -201,22 +201,22 @@ blind spots which requires testing on new out-of-distribution examples,
 not ones that the model’s seen before.
 
 More formally, we now have three datasets, 𝒟<sub>*in*</sub>,
-𝒟<sub>*o**u**t*</sub><sup>*a**u**x*</sup>,
-𝒟<sub>*o**u**t*</sub><sup>*test*</sup>. We train the classifier
+𝒟<sub>*out*</sub><sup>*aux*</sup>,
+𝒟<sub>*out*</sub><sup>*test*</sup>. We train the classifier
 using the in-distribution and the auxiliary dataset using the following
 loss template:
 
-$$𝔼<sub>*x*, *y* ∼ 𝒟<sub>*in*</sub></sub>\[ℒ(*f*<sub>*θ*</sub>(*x*), *y*) + *λ*𝔼<sub>*x*′ ∼ 𝒟<sub>*o**u**t*</sub><sup>*a**u**x*</sup></sub>\[ℒ<sub>*O**E*</sub>(*f*<sub>*θ*</sub>(*x*′), *f*<sub>*θ*</sub>(*x*), *y*)\]\]$$
+$$𝔼<sub>*x*, *y* ∼ 𝒟<sub>*in*</sub></sub>\[ℒ(*f*<sub>*θ*</sub>(*x*), *y*) + *λ*𝔼<sub>*x*′ ∼ 𝒟<sub>*out*</sub><sup>*aux*</sup></sub>\[ℒ<sub>*OE*</sub>(*f*<sub>*θ*</sub>(*x*′), *f*<sub>*θ*</sub>(*x*), *y*)\]\]$$
 
-where you can fill ℒ and ℒ<sub>*O**E*</sub> in different ways depending
+where you can fill ℒ and ℒ<sub>*OE*</sub> in different ways depending
 on the situation. For image classification, ℒ is often cross-entropy and
-ℒ<sub>*O**E*</sub> often measures the KL divergence between
+ℒ<sub>*OE*</sub> often measures the KL divergence between
 *f*<sub>*θ*</sub>(*x*′) and a uniform distribution.
 
 After training the model, we test out-of-distribution detection on
-𝒟<sub>*o**u**t*</sub><sup>*test*</sup>. Interestingly enough, the
-authors note that 𝒟<sub>*o**u**t*</sub><sup>*a**u**x*</sup> does not
-need to be close to 𝒟<sub>*o**u**t*</sub><sup>*test*</sup> in
+𝒟<sub>*out*</sub><sup>*test*</sup>. Interestingly enough, the
+authors note that 𝒟<sub>*out*</sub><sup>*aux*</sup> does not
+need to be close to 𝒟<sub>*out*</sub><sup>*test*</sup> in
 order for outlier exposure to improve OOD detection. Instead, the
 auxiliary dataset actually has to be sufficiently close to the
 in-distribution dataset, 𝒟<sub>*in*</sub>, so that the classifier
