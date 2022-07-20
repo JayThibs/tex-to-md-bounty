@@ -79,9 +79,10 @@ common corruptions to ImageNet at five levels of severity each (for a
 total of 75 corruptions). The fifteen corruptions can be seen in figure
 <a href="#fig:corruptions" data-reference-type="ref" data-reference="fig:corruptions">1</a>.
 
-<figure>
-<img src="images/corruptions.png" id="fig:corruptions" style="width:7.5cm" alt="Fifteen common corruptions applied to ImageNet." /><figcaption aria-hidden="true">Fifteen common corruptions applied to ImageNet.</figcaption>
-</figure>
+<p align=center>
+<img src="images/corruptions.png" id="fig:corruptions" style="width:7.5cm" alt="Fifteen common corruptions applied to ImageNet." /><p align=center>Fifteen common corruptions applied to ImageNet.</p>
+</p>
+
 
 The most common metric used for ImageNet-C is *mean corruption error* or
 mCE. To calculate mCE, divide the average error of your classifier over
@@ -108,16 +109,18 @@ scraped off of the internet. Examples of each dataset are shown in
 figure
 <a href="#fig:renditions" data-reference-type="ref" data-reference="fig:renditions">3</a>.
 
+<p align=center>
 <img src="images/sketch.jpeg" title="fig:" id="fig:renditions" style="width:7.5cm" alt="Example images from ImageNet-Sketch (top) and ImageNet-R (bottom)." />
 <img src="images/renditions.png" title="fig:" id="fig:renditions" style="width:7.5cm" alt="Example images from ImageNet-Sketch (top) and ImageNet-R (bottom)." />
+</p>
 
-These two datasets are designed to benchmark a model’s robustness to a
+<p align=center>These two datasets are designed to benchmark a model’s robustness to a
 significant, yet still controlled, distribution shift. In particular,
 these datasets test whether a model can generalize from a dataset
 composed of largely real-world images to datasets consisting of sketches
 or other artistic renditions. This is a difficult task and, if achieved,
 provides strong evidence for a model’s robustness to distribution
-shifts.
+shifts.</p>
 
 ### ImageNet-A
 
@@ -133,9 +136,9 @@ separately collected set of images. Examples from ImageNet-A can be
 found in figure
 <a href="#fig:adversarial" data-reference-type="ref" data-reference="fig:adversarial">4</a>.
 
-<figure>
-<img src="images/adversarial.png" id="fig:adversarial" style="width:5cm" alt="Example images from ImageNet-A." /><figcaption aria-hidden="true">Example images from ImageNet-A.</figcaption>
-</figure>
+<p align=center>
+<img src="images/adversarial.png" id="fig:adversarial" style="width:5cm" alt="Example images from ImageNet-A." /><p align=center>Example images from ImageNet-A.</p>
+</p>
 
 ### WILDS
 
@@ -155,9 +158,9 @@ from a given camera) within the larger distribution. For a visualization
 of images in WILDS, see figure
 <a href="#fig:wilds" data-reference-type="ref" data-reference="fig:wilds">5</a>.
 
-<figure>
-<img src="images/wilds.png" id="fig:wilds" style="width:11cm" alt="The ten different datasets in WILDS." /><figcaption aria-hidden="true">The ten different datasets in WILDS.</figcaption>
-</figure>
+<p align=center>
+<img src="images/wilds.png" id="fig:wilds" style="width:11cm" alt="The ten different datasets in WILDS." /><<p align=center>The ten different datasets in WILDS.</p>
+</p>
 
 Approaches
 ==========
@@ -197,9 +200,9 @@ Figure
 visualizes pyramid adversarial training as well as the performance gains
 it brings.
 
-<figure>
-<img src="images/pyramid.png" id="fig:pyramid" style="width:8cm" alt="Pyramid adversarial training improves in-distribution performance and out-of-distribution robustness." /><figcaption aria-hidden="true">Pyramid adversarial training improves in-distribution performance and out-of-distribution robustness.</figcaption>
-</figure>
+<p align=center>
+<img src="images/pyramid.png" id="fig:pyramid" style="width:8cm" alt="Pyramid adversarial training improves in-distribution performance and out-of-distribution robustness." /><p align=center>Pyramid adversarial training improves in-distribution performance and out-of-distribution robustness.</p>
+</p>
 
 Model Architecture
 ------------------
@@ -277,9 +280,9 @@ computational burden as well. Figure
 <a href="#fig:mae" data-reference-type="ref" data-reference="fig:mae">7</a>
 gives a full visualization of the architecture.
 
-<figure>
-<img src="images/mae.png" id="fig:mae" style="width:10cm" alt="MAE leverages three tricks: aggressive masking, vision transformers, and a two-part architecture for scalability. The encoder is a larger network which only processes the non-masked patches. The decoder is shallower and processes all patches, masked and non-masked. Since the encoder already has deeply processed the non-masked patches, the decoder can focus on reconstructing the image." /><figcaption aria-hidden="true">MAE leverages three tricks: aggressive masking, vision transformers, and a two-part architecture for scalability. The encoder is a larger network which only processes the non-masked patches. The decoder is shallower and processes all patches, masked and non-masked. Since the encoder already has deeply processed the non-masked patches, the decoder can focus on reconstructing the image.</figcaption>
-</figure>
+<p align=center>
+<img src="images/mae.png" id="fig:mae" style="width:10cm" alt="MAE leverages three tricks: aggressive masking, vision transformers, and a two-part architecture for scalability. The encoder is a larger network which only processes the non-masked patches. The decoder is shallower and processes all patches, masked and non-masked. Since the encoder already has deeply processed the non-masked patches, the decoder can focus on reconstructing the image." /><p align=center>MAE leverages three tricks: aggressive masking, vision transformers, and a two-part architecture for scalability. The encoder is a larger network which only processes the non-masked patches. The decoder is shallower and processes all patches, masked and non-masked. Since the encoder already has deeply processed the non-masked patches, the decoder can focus on reconstructing the image.</p>
+</p>
 
 When it was released, MAE quickly set state of the art for many
 robustness benchmarks, including ImageNet-C, ImageNet-Sketch,
