@@ -206,7 +206,7 @@ $\mathcal{D}$<sub>*out*</sub><sup>*test*</sup>. We train the classifier
 using the in-distribution and the auxiliary dataset using the following
 loss template:
 
-$$𝔼_{x, y \sim \mathcal{D}_{in}_}\[\mathcal{L}(f_θ(x), y) + λ𝔼_{x' \sim {\mathcal{D}_{out}_}^{aux}}\[\mathcal{L}_{OE}(f_θ(x'), f_θ(x), y)\]\]$$
+$$\underset{x,y~ \sim \mathcal{D}}{\mathbb{E}}\[\mathcal{L}(f_θ(x), y) + λ\underset{x' \sim \mathcal{D}_{out}_^{aux}}{\mathbb{E}}\[\mathcal{L}_{OE}(f_θ(x'), f_θ(x), y)\]\]$$
 
 where you can fill $\mathcal{L}$ and $\mathcal{L}$<sub>*OE*</sub> in different ways depending
 on the situation. For image classification, $\mathcal{L}$ is often cross-entropy and
