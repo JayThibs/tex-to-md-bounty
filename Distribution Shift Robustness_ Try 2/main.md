@@ -80,7 +80,7 @@ total of 75 corruptions). The fifteen corruptions can be seen in figure
 <a href="#fig:corruptions" data-reference-type="ref" data-reference="fig:corruptions">1</a>.
 
 <p align=center>
-<img src="images/corruptions.png" id="fig:corruptions" style="width:7.5cm" alt="Fifteen common corruptions applied to ImageNet." /><p align=center>Fifteen common corruptions applied to ImageNet.</p>
+<img src="images/corruptions.png" id="fig:corruptions" style="width:7.5cm" alt="Fifteen common corruptions applied to ImageNet." /><p align=center>Figure 1: Fifteen common corruptions applied to ImageNet.</p>
 </p>
 
 
@@ -112,15 +112,16 @@ figure
 <p align=center>
 <img src="images/sketch.jpeg" title="fig:" id="fig:renditions" style="width:7.5cm" alt="Example images from ImageNet-Sketch (top) and ImageNet-R (bottom)." />
 <img src="images/renditions.png" title="fig:" id="fig:renditions" style="width:7.5cm" alt="Example images from ImageNet-Sketch (top) and ImageNet-R (bottom)." />
+Figure 2: Example images from ImageNet-Sketch (top) and ImageNet-R (bottom).
 </p>
 
-<p align=center>These two datasets are designed to benchmark a model’s robustness to a
+These two datasets are designed to benchmark a model’s robustness to a
 significant, yet still controlled, distribution shift. In particular,
 these datasets test whether a model can generalize from a dataset
 composed of largely real-world images to datasets consisting of sketches
 or other artistic renditions. This is a difficult task and, if achieved,
 provides strong evidence for a model’s robustness to distribution
-shifts.</p>
+shifts.
 
 ### ImageNet-A
 
@@ -137,7 +138,7 @@ found in figure
 <a href="#fig:adversarial" data-reference-type="ref" data-reference="fig:adversarial">4</a>.
 
 <p align=center>
-<img src="images/adversarial.png" id="fig:adversarial" style="width:5cm" alt="Example images from ImageNet-A." /><p align=center>Example images from ImageNet-A.</p>
+<img src="images/adversarial.png" id="fig:adversarial" style="width:5cm" alt="Example images from ImageNet-A." /><p align=center>Figure 3: Example images from ImageNet-A.</p>
 </p>
 
 ### WILDS
@@ -159,7 +160,7 @@ of images in WILDS, see figure
 <a href="#fig:wilds" data-reference-type="ref" data-reference="fig:wilds">5</a>.
 
 <p align=center>
-<img src="images/wilds.png" id="fig:wilds" style="width:11cm" alt="The ten different datasets in WILDS." /><<p align=center>The ten different datasets in WILDS.</p>
+<img src="images/wilds.png" id="fig:wilds" style="width:11cm" alt="The ten different datasets in WILDS." /><<p align=center>Figure 4: The ten different datasets in WILDS.</p>
 </p>
 
 Approaches
@@ -201,7 +202,7 @@ visualizes pyramid adversarial training as well as the performance gains
 it brings.
 
 <p align=center>
-<img src="images/pyramid.png" id="fig:pyramid" style="width:8cm" alt="Pyramid adversarial training improves in-distribution performance and out-of-distribution robustness." /><p align=center>Pyramid adversarial training improves in-distribution performance and out-of-distribution robustness.</p>
+<img src="images/pyramid.png" id="fig:pyramid" style="width:8cm" alt="Pyramid adversarial training improves in-distribution performance and out-of-distribution robustness." /><p align=center>Figure 5: Pyramid adversarial training improves in-distribution performance and out-of-distribution robustness.</p>
 </p>
 
 Model Architecture
@@ -281,7 +282,7 @@ computational burden as well. Figure
 gives a full visualization of the architecture.
 
 <p align=center>
-<img src="images/mae.png" id="fig:mae" style="width:10cm" alt="MAE leverages three tricks: aggressive masking, vision transformers, and a two-part architecture for scalability. The encoder is a larger network which only processes the non-masked patches. The decoder is shallower and processes all patches, masked and non-masked. Since the encoder already has deeply processed the non-masked patches, the decoder can focus on reconstructing the image." /><p align=center>MAE leverages three tricks: aggressive masking, vision transformers, and a two-part architecture for scalability. The encoder is a larger network which only processes the non-masked patches. The decoder is shallower and processes all patches, masked and non-masked. Since the encoder already has deeply processed the non-masked patches, the decoder can focus on reconstructing the image.</p>
+<img src="images/mae.png" id="fig:mae" style="width:10cm" alt="MAE leverages three tricks: aggressive masking, vision transformers, and a two-part architecture for scalability. The encoder is a larger network which only processes the non-masked patches. The decoder is shallower and processes all patches, masked and non-masked. Since the encoder already has deeply processed the non-masked patches, the decoder can focus on reconstructing the image." /><p align=center>Figure 6: MAE leverages three tricks: aggressive masking, vision transformers, and a two-part architecture for scalability. The encoder is a larger network which only processes the non-masked patches. The decoder is shallower and processes all patches, masked and non-masked. Since the encoder already has deeply processed the non-masked patches, the decoder can focus on reconstructing the image.</p>
 </p>
 
 When it was released, MAE quickly set state of the art for many
