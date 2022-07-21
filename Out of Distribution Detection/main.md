@@ -104,7 +104,7 @@ that the 95% threshold is somewhat arbitrary. Other papers have used FPR
 current community standard.
 
 <p align=center>
-<img src="images/fpr_tpr.png" id="fig:my_label" style="width:5.5cm" alt="True positive rate vs false positive rate." /><p align=center>True positive rate vs false positive rate.</p>
+<img src="images/fpr_tpr.png" id="fig:my_label" style="width:5.5cm" alt="True positive rate vs false positive rate." /><p align=center>Figure 1: True positive rate vs false positive rate.</p>
 </p>
 
 ### AUROC
