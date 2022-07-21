@@ -36,18 +36,18 @@ Problem
 
 To be precise, we have some model *f*<sub>*θ*</sub>(*x*) which outputs a
 result and an auxiliary confidence score for each input. We train this
-model on some dataset 𝒟<sup>*train*</sup> and test it on a
-testing set 𝒟<sup>*test*</sup>. Because we have access to the
-training set, we know that 𝒟<sup>*train*</sup> consists of only
+model on some dataset $\mathcal{D}$<sup>*train*</sup> and test it on a
+testing set $\mathcal{D}$<sup>*test*</sup>. Because we have access to the
+training set, we know that $\mathcal{D}$<sup>*train*</sup> consists of only
 in-distribution data. However, to simulate real-world conditions, we
-have that 𝒟<sup>*test*</sup> is composed of an in-distribution set
-𝒟<sub>*in*</sub><sup>*test*</sup> and an out-of-distribution set
-𝒟<sub>*out*</sub><sup>*test*</sup> shuffled together.
+have that $\mathcal{D}$<sup>*test*</sup> is composed of an in-distribution set
+$\mathcal{D}$<sub>*in*</sub><sup>*test*</sup> and an out-of-distribution set
+$\mathcal{D}$<sub>*out*</sub><sup>*test*</sup> shuffled together.
 
 Let *s*<sub>1</sub>, ..., *s*<sub>*n*</sub> and
 *s*’<sub>1</sub>, …, *s*’<sub>*n*</sub> be the confidence scores for
-𝒟<sub>*in*</sub><sup>*test*</sup> and
-𝒟<sub>*o**u**t*</sub><sup>*test*</sup> respectively. Out of
+$\mathcal{D}$<sub>*in*</sub><sup>*test*</sup> and
+$\mathcal{D}$<sub>*o**u**t*</sub><sup>*test*</sup> respectively. Out of
 distribution detection involves ensuring that the distribution
 *s*<sub>1</sub>, …, *s*<sub>*n*</sub> is maximally far from
 *s*’<sub>1</sub>, …, *s*’<sub>*n*</sub>. Then all scores above a certain
@@ -55,7 +55,7 @@ threshold *t* are considered out-of-distribution, whereas all scores
 below *t* are considered in-distribution. In practice, the threshold *t*
 is not fixed but dynamically generated based on the score distribution
 of the training set (e.g., the 95% percentile of
-𝒟<sub>*in*</sub><sup>*test*</sup>). We begin by establishing a
+$\mathcal{D}$<sub>*in*</sub><sup>*test*</sup>). We begin by establishing a
 few metrics and then discuss common benchmarks that people use.
 
 Metrics
@@ -89,13 +89,13 @@ One of the primary metrics to measure OOD detection quality is FPR 95,
 which shows false positive rate at 95% true positive rate. Essentially,
 we set the out-of-distribution threshold *t* such that we detect 95% of
 the out-of-distribution data
-𝒟<sub>*out*</sub><sup>*test*</sup>. Then, out of the examples
+$\mathcal{D}$<sub>*out*</sub><sup>*test*</sup>. Then, out of the examples
 marked as out-of-distribution, we measure the proportion which are
-actually in-distribution 𝒟<sub>*in*</sub><sup>*test*</sup>.
+actually in-distribution $\mathcal{D}$<sub>*in*</sub><sup>*test*</sup>.
 
 For instance, in the cats-vs-dogs example, we might collect a dataset of
-cats and dogs 𝒟<sub>*in*</sub><sup>*test*</sup> and a dataset of
-hamsters 𝒟<sub>*out*</sub><sup>*test*</sup>. Then for FPR 95,
+cats and dogs $\mathcal{D}$<sub>*in*</sub><sup>*test*</sup> and a dataset of
+hamsters $\mathcal{D}$<sub>*out*</sub><sup>*test*</sup>. Then for FPR 95,
 we find the threshold *t* which classifies 95% of the hamsters as
 out-of-distribution. Finally, we see the proportion of cat/dog images
 which as classified as out-of-distribution along with the hamsters. Note
@@ -200,26 +200,26 @@ before. Out-of-distribution detection is meant to catch the model’s
 blind spots which requires testing on new out-of-distribution examples,
 not ones that the model’s seen before.
 
-More formally, we now have three datasets, 𝒟<sub>*in*</sub>,
-𝒟<sub>*out*</sub><sup>*aux*</sup>,
-𝒟<sub>*out*</sub><sup>*test*</sup>. We train the classifier
+More formally, we now have three datasets, $\mathcal{D}$<sub>*in*</sub>,
+$\mathcal{D}$<sub>*out*</sub><sup>*aux*</sup>,
+$\mathcal{D}$<sub>*out*</sub><sup>*test*</sup>. We train the classifier
 using the in-distribution and the auxiliary dataset using the following
 loss template:
 
-$$𝔼<sub>*x*, *y* ∼ 𝒟<sub>*in*</sub></sub>\[ℒ(*f*<sub>*θ*</sub>(*x*), *y*) + *λ*𝔼<sub>*x*′ ∼ 𝒟<sub>*out*</sub><sup>*aux*</sup></sub>\[ℒ<sub>*OE*</sub>(*f*<sub>*θ*</sub>(*x*′), *f*<sub>*θ*</sub>(*x*), *y*)\]\]$$
+$$𝔼_{x, y \sim \mathcal{D}_{in}_}\[\mathcal{L}(f_θ(x), y) + λ𝔼_{x' \sim {\mathcal{D}_{out}_}^{aux}}\[\mathcal{L}_{OE}(f_θ(x'), f_θ(x), y)\]\]$$
 
-where you can fill ℒ and ℒ<sub>*OE*</sub> in different ways depending
-on the situation. For image classification, ℒ is often cross-entropy and
-ℒ<sub>*OE*</sub> often measures the KL divergence between
-*f*<sub>*θ*</sub>(*x*′) and a uniform distribution.
+where you can fill $\mathcal{L}$ and $\mathcal{L}$<sub>*OE*</sub> in different ways depending
+on the situation. For image classification, $\mathcal{L}$ is often cross-entropy and
+$\mathcal{L}$<sub>*OE*</sub> often measures the KL divergence between
+*f*<sub>*θ*</sub>(*x*') and a uniform distribution.
 
 After training the model, we test out-of-distribution detection on
-𝒟<sub>*out*</sub><sup>*test*</sup>. Interestingly enough, the
-authors note that 𝒟<sub>*out*</sub><sup>*aux*</sup> does not
-need to be close to 𝒟<sub>*out*</sub><sup>*test*</sup> in
+$\mathcal{D}$<sub>*out*</sub><sup>*test*</sup>. Interestingly enough, the
+authors note that $\mathcal{D}$<sub>*out*</sub><sup>*aux*</sup> does not
+need to be close to $\mathcal{D}$<sub>*out*</sub><sup>*test*</sup> in
 order for outlier exposure to improve OOD detection. Instead, the
 auxiliary dataset actually has to be sufficiently close to the
-in-distribution dataset, 𝒟<sub>*in*</sub>, so that the classifier
+in-distribution dataset, $\mathcal{D}$<sub>*in*</sub>, so that the classifier
 doesn’t simply learn very simple patterns. Beyond that, the diversity of
 the auxiliary dataset also matters. The more diverse the auxiliary
 dataset, the better the model understands what counts as in-distribution
