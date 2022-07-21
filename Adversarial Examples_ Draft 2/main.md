@@ -149,7 +149,7 @@ During adversarial training, we expose our model to adversarial examples
 and penalize our model if the model is decieved. In particular, an
 adversarial training loss might be as follows:
 
-$$\text{Loss}(f, \mathcal{D}) = 𝔼_{x,y \sim \mathcal{D}}\left[\text{CrossEntropy}(f(x), y) + \lambda \cdot \text{CrossEntropy}(f(g_{adv}(x)), y)\right].$$
+$$\text{Loss}(f, \mathcal{D}) = \underset{x,y~ \sim \mathcal{D}}{\mathbb{E}}\left[\text{CrossEntropy}(f(x), y) + \lambda \cdot \text{CrossEntropy}(f(g_{adv}(x)), y)\right].$$
 
 where *λ* is some hyperparameter determining how much we emphasize the
 adversarial training. This often reduces accuracy, but increases
