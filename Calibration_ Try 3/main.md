@@ -147,7 +147,7 @@ plots show the gap between the expected and actual accuracy for each
 bin.
 
 <p align=center>
-<img src="images/modern.png" id="fig:modern" style="width:7.5cm" alt="The confidence histogram (top) and reliability diagram (bot) of a LeNet (left) and ResNet (right). Figure taken from (Guo et al. 2017)." /><figcaption aria-hidden="true">The confidence histogram (top) and reliability diagram (bot) of a LeNet (left) and ResNet (right). Figure taken from <span class="citation" data-cites="guo2017calibration">(Guo et al. 2017)</span>.</figcaption>
+<img src="images/modern.png" id="fig:modern" style="width:7.5cm" alt="The confidence histogram (top) and reliability diagram (bot) of a LeNet (left) and ResNet (right). Figure taken from (Guo et al. 2017)." /><figcaption aria-hidden="true">Figure 1: The confidence histogram (top) and reliability diagram (bot) of a LeNet (left) and ResNet (right). Figure taken from <span class="citation" data-cites="guo2017calibration">(Guo et al. 2017)</span>.</figcaption>
 </p>
 
 Notice how the confidence scores for ResNets are quite concentrated in
@@ -175,7 +175,7 @@ accuracy). See figure
 for a visualization of this.
 
 <p align=center>
-<img src="images/temperature.png" id="fig:temperature" style="width:7.5cm" alt="We apply both temperature and softmax to some fixed logits and graph the results. Increasing the temperature increases spread, while decreasing the temperature sharpens the distribution." /><figcaption aria-hidden="true">We apply both temperature and softmax to some fixed logits and graph the results. Increasing the temperature increases spread, while decreasing the temperature sharpens the distribution.</figcaption>
+<img src="images/temperature.png" id="fig:temperature" style="width:7.5cm" alt="We apply both temperature and softmax to some fixed logits and graph the results. Increasing the temperature increases spread, while decreasing the temperature sharpens the distribution." /><figcaption aria-hidden="true">Figure 2: We apply both temperature and softmax to some fixed logits and graph the results. Increasing the temperature increases spread, while decreasing the temperature sharpens the distribution.</figcaption>
 </p>
 
 Temperature scaling is usually implemented by first training a model
