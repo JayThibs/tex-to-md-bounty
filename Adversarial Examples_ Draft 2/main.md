@@ -61,7 +61,7 @@ euclidean distance and the ∞-norm, which is simply the maximum over the
 dimensions.
 
 <p align="center">
-<img src="images/openai_panda.png" id="fig:openai_panda" style="width:10cm" alt="By adding imperceptible noise to an image, we can fool the model into classifying the image improperly." /><figcaption aria-hidden="true">By adding imperceptible noise to an image, we can fool the model into classifying the image improperly.</figcaption>
+<img src="images/openai_panda.png" id="fig:openai_panda" style="width:10cm" alt="By adding imperceptible noise to an image, we can fool the model into classifying the image improperly." /><figcaption aria-hidden="true">Figure 1: By adding imperceptible noise to an image, we can fool the model into classifying the image improperly.</figcaption>
 </p>
 
 We restate the paradigm using mathematical notation. Let $\mathcal{D}$ be a dataset
